@@ -1,0 +1,77 @@
+@import "./colors.scss";
+@import "./texts.scss";
+
+@mixin defaultResults() {
+  table-layout: fixed;
+
+  & > thead {
+    & > tr {
+      background-color: #ffffff;
+
+      & > th {
+        font-weight: 500;
+        text-align: left;
+        color: $color-medium-text;
+        font-size: 14px;
+        padding: 24px 11px;
+        box-sizing: border-box;
+
+        &:last-of-type {
+          text-align: right;
+        }
+
+        & > span {
+          @include multiline(1);
+        }
+      }
+    }
+  }
+  & > tbody {
+    & > tr {
+      &:nth-child(even) {
+        background-color: #ffffff;
+      }
+      &:nth-child(odd) {
+        background-color: #f9f9fc;
+      }
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.04);
+      }
+
+      & > td {
+        font-weight: 500;
+        text-align: left;
+        color: $color-primary-text;
+        font-size: 14px;
+        padding: 24px 11px;
+        box-sizing: border-box;
+
+        &:last-of-type {
+          text-align: right;
+        }
+
+        & > p {
+          @include multiline(1);
+        }
+
+        & > a {
+          @include multiline(1);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  @mixin defaultResults() {
+    & > thead {
+      & > tr {
+        & > th {
+          & > span {
+            @include multiline(1);
+          }
+        }
+      }
+    }
+  }
+}

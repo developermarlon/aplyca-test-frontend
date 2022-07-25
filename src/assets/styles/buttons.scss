@@ -1,0 +1,77 @@
+@import "./colors.scss";
+
+@mixin Btn {
+  font-weight: 800;
+  border: none;
+  padding: 0px 20px 0px 20px;
+  box-sizing: border-box;
+  width: auto;
+  min-width: 100px;
+  height: auto;
+  min-height: 40px;
+  cursor: pointer;
+}
+
+@mixin ButtonIcon {
+  @include Btn;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  & > svg {
+    position: absolute;
+    font-size: 15px;
+  }
+}
+
+@mixin BtnColorStyle($color, $hoverColor) {
+  color: #ffffff;
+  background-color: $color;
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+
+  &:hover {
+    background-color: $hoverColor;
+    box-shadow: 0px 20px 20px -20px rgba($color, 0.4);
+  }
+
+  &:disabled {
+    background-color: rgba($color, 0.5);
+  }
+}
+
+.btn {
+  @include Btn;
+}
+
+.btn-icon-left {
+  @include ButtonIcon;
+  & > svg {
+    left: 20px;
+  }
+}
+
+.btn-icon-right {
+  @include ButtonIcon;
+  & > svg {
+    right: 20px;
+  }
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-lg {
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.btn-primary {
+  @include BtnColorStyle($primaryColor, #0043ca);
+}
+
+.btn-danger {
+  @include BtnColorStyle(#c13232, #a62a2a);
+}
